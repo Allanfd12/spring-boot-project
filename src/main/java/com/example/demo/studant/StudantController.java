@@ -1,9 +1,7 @@
 package com.example.demo.studant;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class StudantController {
     @GetMapping
     public List<Studant> getStudants(){
         return studantService.getStudants();
+    }
+
+    @PostMapping
+    public void registerNewStudant(@RequestBody  Studant studant){
+        studantService.addNewStudant(studant);
     }
 }
