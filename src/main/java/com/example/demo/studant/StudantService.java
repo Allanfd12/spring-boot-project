@@ -25,6 +25,17 @@ public class StudantService {
         return studantRepository.findAll();
     }
 
+    public Studant getStudant(Long id){
+
+        Optional<Studant> studant = studantRepository.findById(id);
+
+        if(!studant.isPresent()){
+            throw new IllegalStateException("Estudante com o ID : " + id + " não foi encontrado");
+        }
+
+        return studant.get();
+    }
+
     public void addNewStudant(Studant studant) {
         Optional<Studant> studantByEmail = studantRepository.findStudentByEmail(studant.getEmail());
 
